@@ -256,19 +256,19 @@ typedef struct IQUEUEHEAD iqueue_head;
 struct IKCPSEG
 {
 	struct IQUEUEHEAD node;
-	IUINT32 conv;
-	IUINT32 cmd;
-	IUINT32 frg;
-	IUINT32 wnd;
-	IUINT32 ts;
-	IUINT32 sn;
-	IUINT32 una;
-	IUINT32 len;
-	IUINT32 resendts;
-	IUINT32 rto;
-	IUINT32 fastack;
-	IUINT32 xmit;
-	char data[1];
+	IUINT32 conv; //conversation id
+	IUINT32 cmd; // segment类型，数据包、ack包、询问窗口包、告知窗口包
+	IUINT32 frg; // fragment 该fragment在整个数据包的倒序序号
+	IUINT32 wnd; // window 滑动窗口大小
+	IUINT32 ts; // timestamp 该segment发送时的时间戳
+	IUINT32 sn; // segment number序列号
+	IUINT32 una; // unackknowledged 标记是否ack
+	IUINT32 len; // length 长度
+	IUINT32 resendts; // 重发时间戳
+	IUINT32 rto; // retransmission timeout, 重传时间，根据网络情况动态设置
+	IUINT32 fastack; // 快速重传使用
+	IUINT32 xmit; // 重传次数
+	char data[1]; // 应用层数据
 };
 
 
